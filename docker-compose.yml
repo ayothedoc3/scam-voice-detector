@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - RESEMBLE_API_KEY=${RESEMBLE_API_KEY}
+      - DEBUG=true
+      - CORS_ORIGINS=["http://localhost:8501"]
+    volumes:
+      - ./backend/temp_uploads:/app/temp_uploads
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      - backend
+    command: streamlit run app.py --server.port 8501 --server.address 0.0.0.0
+
+volumes:
+  temp_uploads:
