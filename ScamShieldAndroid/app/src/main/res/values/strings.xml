@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Scam Shield</string>
+
+    <!-- General -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Retry</string>
+    <string name="error">Error</string>
+
+    <!-- Auth -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+
+    <!-- Protection -->
+    <string name="start_protection">Start Protection</string>
+    <string name="stop_protection">Stop Protection</string>
+    <string name="protection_active">Protection Active</string>
+    <string name="call_protection">Call Protection</string>
+    <string name="risk_level">Risk Level</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_protection">Call Protection</string>
+    <string name="notification_channel_alerts">Scam Alerts</string>
+    <string name="notification_channel_general">General</string>
+
+    <!-- Errors -->
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_unknown">An unknown error occurred.</string>
+    <string name="error_permission_denied">Permission denied. Please grant required permissions.</string>
+</resources>
