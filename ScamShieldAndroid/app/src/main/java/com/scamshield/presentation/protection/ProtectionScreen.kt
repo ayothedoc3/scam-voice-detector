@@ -35,8 +35,6 @@ fun ProtectionScreen(
             when {
                 !state.isActive -> {
                     StartProtectionCard(
-                        phoneNumber = state.phoneNumber,
-                        onPhoneNumberChange = viewModel::updatePhoneNumber,
                         onStartClick = viewModel::startProtection,
                         isLoading = state.isLoading
                     )
@@ -91,8 +89,6 @@ fun ProtectionScreen(
 
 @Composable
 fun StartProtectionCard(
-    phoneNumber: String,
-    onPhoneNumberChange: (String) -> Unit,
     onStartClick: () -> Unit,
     isLoading: Boolean
 ) {
@@ -112,22 +108,14 @@ fun StartProtectionCard(
             )
 
             Text(
-                text = "Enter your phone number to activate protection",
+                text = "Click below to activate call protection",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            OutlinedTextField(
-                value = phoneNumber,
-                onValueChange = onPhoneNumberChange,
-                label = { Text("Phone Number") },
-                placeholder = { Text("+1234567890") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
             Button(
                 onClick = onStartClick,
-                enabled = !isLoading && phoneNumber.isNotBlank(),
+                enabled = !isLoading,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 if (isLoading) {

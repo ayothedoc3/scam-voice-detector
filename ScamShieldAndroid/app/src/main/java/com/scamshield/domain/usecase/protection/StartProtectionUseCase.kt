@@ -7,8 +7,8 @@ import javax.inject.Inject
 class StartProtectionUseCase @Inject constructor(
     private val protectionRepository: IProtectionRepository
 ) {
-    suspend operator fun invoke(phoneNumber: String): StartProtectionResponse {
-        val result = protectionRepository.startProtection(phoneNumber)
+    suspend operator fun invoke(): StartProtectionResponse {
+        val result = protectionRepository.startProtection()
         return result.getOrThrow()
     }
 }
