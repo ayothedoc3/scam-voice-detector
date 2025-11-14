@@ -1,7 +1,6 @@
 package com.scamshield.data.remote.api
 
 import com.scamshield.data.remote.dto.CallStatusResponse
-import com.scamshield.data.remote.dto.StartProtectionRequest
 import com.scamshield.data.remote.dto.StartProtectionResponse
 import com.scamshield.data.remote.dto.StopProtectionRequest
 import retrofit2.http.*
@@ -10,8 +9,7 @@ interface ProtectionApi {
 
     @POST("/api/v1/protection/start")
     suspend fun startProtection(
-        @Header("Authorization") token: String,
-        @Body request: StartProtectionRequest
+        @Header("Authorization") token: String
     ): StartProtectionResponse
 
     @POST("/api/v1/protection/stop")

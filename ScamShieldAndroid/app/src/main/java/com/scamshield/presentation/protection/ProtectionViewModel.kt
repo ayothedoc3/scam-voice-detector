@@ -24,16 +24,12 @@ class ProtectionViewModel @Inject constructor(
     private val _state = MutableStateFlow(ProtectionState())
     val state: StateFlow<ProtectionState> = _state.asStateFlow()
 
-    fun updatePhoneNumber(phoneNumber: String) {
-        _state.update { it.copy(phoneNumber = phoneNumber) }
-    }
-
     fun startProtection() {
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
 
             try {
-                val result = startProtectionUseCase(state.value.phoneNumber)
+                val result = startProtectionUseCase()
 
                 _state.update {
                     it.copy(
@@ -123,7 +119,6 @@ class ProtectionViewModel @Inject constructor(
 }
 
 data class ProtectionState(
-    val phoneNumber: String = "",
     val isLoading: Boolean = false,
     val isActive: Boolean = false,
     val isWaitingForMerge: Boolean = false,

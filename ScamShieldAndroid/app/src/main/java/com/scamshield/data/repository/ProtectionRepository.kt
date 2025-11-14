@@ -3,7 +3,6 @@ package com.scamshield.data.repository
 import com.scamshield.data.local.PreferencesManager
 import com.scamshield.data.remote.api.ProtectionApi
 import com.scamshield.data.remote.dto.CallStatusResponse
-import com.scamshield.data.remote.dto.StartProtectionRequest
 import com.scamshield.data.remote.dto.StartProtectionResponse
 import com.scamshield.data.remote.dto.StopProtectionRequest
 import com.scamshield.domain.repository.IProtectionRepository
@@ -17,14 +16,13 @@ class ProtectionRepository @Inject constructor(
     private val preferencesManager: PreferencesManager
 ) : IProtectionRepository {
 
-    override suspend fun startProtection(phoneNumber: String): Result<StartProtectionResponse> {
+    override suspend fun startProtection(): Result<StartProtectionResponse> {
         return try {
             val token = preferencesManager.getAuthToken()
                 ?: return Result.failure(Exception("Not authenticated"))
 
             val response = protectionApi.startProtection(
-                token = "Bearer $token",
-                request = StartProtectionRequest(userPhone = phoneNumber)
+                token = "Bearer $token"
             )
 
             Result.success(response)

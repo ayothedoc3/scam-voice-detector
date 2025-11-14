@@ -2,11 +2,6 @@ package com.scamshield.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class StartProtectionRequest(
-    @SerializedName("user_phone")
-    val userPhone: String
-)
-
 data class StartProtectionResponse(
     @SerializedName("session_id")
     val sessionId: Long,
